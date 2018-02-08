@@ -1,14 +1,15 @@
-import com.sun.glass.ui.View;
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Этот класс является базовым.
+ * Содержит весь жизненный цикл драйвера.
+ */
 public class BaseClass {
     protected static WebDriver driver;
     protected static WebDriverWait wait;

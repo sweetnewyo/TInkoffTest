@@ -2,6 +2,9 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/**
+ * Класс описывает содержание стартовой страницы.
+ */
 
 //Стартовая страница www.tinkoff.ru
 public class HomePage extends PageObject{
