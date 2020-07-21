@@ -1,1 +1,13 @@
+# IDEA:
+.idea/**/*
+.idea/*
 .idea/
+*.iml
+
+*.class
+
+# Log file
+*.log
+
+# IntelliJ
+target/
