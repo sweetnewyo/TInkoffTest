@@ -1,3 +1,6 @@
+package ru.tinkoff.web.pages;
+
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -8,22 +11,22 @@ import java.util.List;
 /**
  * Класс описывает содержание страницы с поставщиками услуг.
  */
+@Data
+public class ServiceProvidersPage extends BasePage{
 
-public class ServiceProviders extends PageObject{
 
-
-    public ServiceProviders(WebDriver driver, WebDriverWait wait) {
+    public ServiceProvidersPage(WebDriver driver, WebDriverWait wait) {
         super(driver, wait);
     }
 
     // Локаторы выбора региона
-    protected By regionLocator = By.cssSelector("span.Link__link_3805p.Link__link_color_blue_10po6.Link__link_type_simple_l_2v_");
-    protected By regionLocator1 = By.cssSelector("span.PaymentsCatalogHeader__regionSelect_3MRVi");
+    private By regionLocator = By.cssSelector("span.Link__link_3805p.Link__link_color_blue_10po6.Link__link_type_simple_l_2v_");
+    private By regionLocator1 = By.cssSelector("span.PaymentsCatalogHeader__regionSelect_3MRVi");
     // Локаторы ЖКУ-Москва
-    protected By mosZKH = By.cssSelector("ul.ui-menu.ui-menu_icons.UIPayments__categoryProviders_3Fsrs li:first-child");
-    protected By mosZKHText = By.xpath("//span[text()=\"ЖКУ-Москва\"]");
+    private By mosZKH = By.cssSelector("ul.ui-menu.ui-menu_icons.UIPayments__categoryProviders_3Fsrs li:first-child");
+    private By mosZKHText = By.xpath("//span[text()=\"ЖКУ-Москва\"]");
     // Локатор списка провайдеров на странице, необходимо для последнего шага
-    protected By listOfProviders = By.cssSelector("li.ui-menu__item.ui-menu__item_icons");
+    private By listOfProviders = By.cssSelector("li.ui-menu__item.ui-menu__item_icons");
 
 
     // Получение названия текущего выбранного региона
@@ -32,15 +35,15 @@ public class ServiceProviders extends PageObject{
     }
 
     // Переход на страницу с регионами, возвращает страницу с регионами
-    public ListOfRegions openListOfRegions(){
+    public RegionsPage openListOfRegions(){
         driver.findElement(regionLocator1).click();
-        return new ListOfRegions(driver,wait);
+        return new RegionsPage(driver,wait);
     }
 
     // Переход на страницу для заполнения оплаты.
-    public PaymentsZKH openMosZKH(){
+    public PaymentsZKHPage openMosZKH(){
         driver.findElement(mosZKH).click();
-        return new PaymentsZKH(driver,wait);
+        return new PaymentsZKHPage(driver,wait);
     }
     // Получение текста выбранного поставщика услуг
     public String getTextMosZKH(){

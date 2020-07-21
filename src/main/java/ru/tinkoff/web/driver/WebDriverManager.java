@@ -1,3 +1,5 @@
+package ru.tinkoff.web.driver;
+
 import org.junit.After;
 import org.junit.Before;
 import org.openqa.selenium.WebDriver;
@@ -10,7 +12,7 @@ import java.util.concurrent.TimeUnit;
  * Этот класс является базовым.
  * Содержит весь жизненный цикл драйвера.
  */
-public class BaseClass {
+public class WebDriverManager {
     protected static WebDriver driver;
     protected static WebDriverWait wait;
 

@@ -1,3 +1,6 @@
+package ru.tinkoff.web.pages;
+
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -7,19 +10,20 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 
 //Стартовая страница www.tinkoff.ru
-public class HomePage extends PageObject{
+@Data
+public class HomePage extends BasePage {
 
     //Локатор "Платежи"
-    protected By paymentsLocator = By.cssSelector("ul#mainMenu li.ui-product-block-header-menu-item__item_3WGrk:nth-child(3)");
+    private By paymentsLocator = By.cssSelector("ul#mainMenu li.ui-product-block-header-menu-item__item_3WGrk:nth-child(3)");
 
     //Иницмализация родительского конструктора.
     public HomePage(WebDriver driver, WebDriverWait wait) {
-        super(driver,wait);
+        super(driver, wait);
     }
 
     //Переход на страницу "Платежи", возвращает страницу "Платежи"
-    public PaymentsPage click(){
+    public PaymentsPage click() {
         driver.findElement(paymentsLocator).click();
-        return new PaymentsPage(driver,wait);
+        return new PaymentsPage(driver, wait);
     }
 }

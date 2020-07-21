@@ -1,3 +1,6 @@
+package ru.tinkoff.web.pages;
+
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,14 +13,15 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOfElem
  * Содержит наиболее частые методы, которые использовались.
  * Так как шапка сайта является частью всех страниц, то шапку решено описывать именно в родительском классе.
  */
-public class PageObject {
+@Data
+public class BasePage {
     protected WebDriver driver;
     protected WebDriverWait wait;
     //Локатор для "Платежи" в шапке, не является объектом HomePage, так как локаторы разные
-    protected By headerPayments = By.cssSelector("ul#mainMenu li.HeaderMenuItem__item_2v2UK:nth-child(3)");
+    private By headerPayments = By.cssSelector("ul#mainMenu li.HeaderMenuItem__item_2v2UK:nth-child(3)");
 
     //Конструктор родительского класса
-    public PageObject(WebDriver driver, WebDriverWait wait) {
+    public BasePage(WebDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
     }

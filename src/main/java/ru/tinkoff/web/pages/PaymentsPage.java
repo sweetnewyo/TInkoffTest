@@ -1,7 +1,12 @@
+package ru.tinkoff.web.pages;
+
+import lombok.Data;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import ru.tinkoff.web.pages.BasePage;
+
 import java.util.List;
 
 /**
@@ -9,7 +14,8 @@ import java.util.List;
  */
 
 //Страница платежи
-public class PaymentsPage extends PageObject {
+@Data
+public class PaymentsPage extends BasePage {
 
     //Инициализация родительского конструктора
     public PaymentsPage(WebDriver driver, WebDriverWait wait) {
@@ -18,16 +24,16 @@ public class PaymentsPage extends PageObject {
 
 
     //Локатор кнопки ЖКХ (круглая с домом)
-    protected By communalPaymentsLocator = By.cssSelector("span.ui-link.ui-menu__logo-link > a[title=ЖКХ]");
+    private By communalPaymentsLocator = By.cssSelector("span.ui-link.ui-menu__logo-link > a[title=ЖКХ]");
     //Локатор быстрого поиска
-    protected By quickSearch = By.cssSelector("input.Input__field_2XFoD.Input__field_align_left_1phV_");
+    private By quickSearch = By.cssSelector("input.Input__field_2XFoD.Input__field_align_left_1phV_");
     //Локатор результата списка быстрого поиска
-    protected By listOfQuickSearch = By.cssSelector("div.Text__text_3WKsv.Text__text_size_17_HhZgX.Text__text_sizeDesktop_17_IHzjA.Text__text_overflowEllipsis_1A9i2");
+    private By listOfQuickSearch = By.cssSelector("div.Text__text_3WKsv.Text__text_size_17_HhZgX.Text__text_sizeDesktop_17_IHzjA.Text__text_overflowEllipsis_1A9i2");
 
     //Нажатие на кнопку ЖКХ, переход на страницу поставщики услуг, возвращает страницу поставщики услуг.
-    public ServiceProviders click() {
+    public ServiceProvidersPage click() {
         driver.findElement(communalPaymentsLocator).click();
-        return new ServiceProviders(driver, wait);
+        return new ServiceProvidersPage(driver, wait);
     }
 
     @Override
@@ -36,7 +42,7 @@ public class PaymentsPage extends PageObject {
     }
 
     // Получение списка элементов по локатору.
-    public List<WebElement> getElements(By locator){
+    public List<WebElement> getElements(By locator) {
         return driver.findElements(locator);
     }
 }
